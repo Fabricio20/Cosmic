@@ -1,6 +1,6 @@
 FROM richarvey/nginx-php-fpm:1.10.3
 
-ADD --chown=www-data:www-data Cosmic /cosmic
+ADD --chown=nginx:nginx Cosmic /cosmic
 
 RUN apk update && \
     apk add --no-cache nano wget curl composer && \
