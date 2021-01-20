@@ -1,13 +1,14 @@
 FROM nginx
 
 # Install software
-RUN apt update && \
-    apt -y install curl nano git lsb-release apt-transport-https ca-certificates  && \
+RUN apt-get update && \
+    apt-get install -y apt-utils wget curl nano git && \
+    apt-get install -y lsb-release apt-transport-https ca-certificates  && \
     wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg && \
     echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/php.list && \
     apt update && \
-    apt -y install php7.4-fpm && \
-    apt -y install php7.4-common php7.4-mysql php7.4-xml php7.4-xmlrpc php7.4-curl php7.4-gd php7.4-imagick php7.4-cli php7.4-dev php7.4-imap php7.4-mbstring php7.4-opcache php7.4-soap php7.4-zip php7.4-intl && \
+    apt-get install -y php7.4-fpm && \
+    apt-get install -y php7.4-common php7.4-mysql php7.4-xml php7.4-xmlrpc php7.4-curl php7.4-gd php7.4-imagick php7.4-cli php7.4-dev php7.4-imap php7.4-mbstring php7.4-opcache php7.4-soap php7.4-zip php7.4-intl && \
     curl -s https://getcomposer.org/installer | php && \
     mkdir /var/www
 
