@@ -11,11 +11,12 @@ RUN apt-get update && \
     apt-get install -y php7.4-common php7.4-mysql php7.4-xml php7.4-xmlrpc php7.4-curl php7.4-gd php7.4-imagick php7.4-cli php7.4-dev php7.4-imap php7.4-mbstring php7.4-opcache php7.4-soap php7.4-zip php7.4-intl
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && \
+    rm -rf /var/www && \
     mkdir /var/www
 
 WORKDIR "/var/www"
 
-RUN git clone https://github.com/devraizer/Cosmic.git && \
+RUN git clone https://github.com/devraizer/Cosmic.git . && \
     cd Cosmic && \
     composer update && \
     chmod 777 App && \
